@@ -350,7 +350,7 @@ function Hero() {
   }, [carouselImages.length]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#1A1A1A] pt-20">
+    <section className="relative w-full min-h-screen overflow-hidden bg-[#1A1A1A]">
       {/* Carousel background */}
       <div className="absolute inset-0 w-full h-full top-20 sm:top-0">
         {carouselImages.map((img, index) => (
@@ -373,17 +373,17 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-black/75" />
 
       {/* Centered glass card */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 sm:px-6">
-        <div className="bg-black/25 backdrop-blur-[3px] border border-white/10 rounded-2xl sm:rounded-3xl px-6 sm:px-10 lg:px-14 py-8 sm:py-12 lg:py-14 max-w-3xl w-full text-center shadow-2xl mt-4">
+      <div className="relative flex flex-col items-center px-4 sm:px-6 pt-32">
+        <div className="bg-black/25 backdrop-blur-[3px] border border-white/10 rounded-2xl sm:rounded-3xl px-4 sm:px-6 md:px-10 lg:px-14 py-6 sm:py-10 md:py-12 lg:py-14 max-w-3xl w-full text-center shadow-2xl mt-16 sm:mt-8">
           {/* Eyebrow */}
-          <p className="font-body text-[9px] sm:text-[11px] font-semibold tracking-[0.35em] sm:tracking-[0.4em] uppercase text-[#FFB796] mb-4 sm:mb-6">
+          <p className="font-body text-[8px] sm:text-[10px] md:text-[11px] font-semibold tracking-[0.3em] sm:tracking-[0.35em] md:tracking-[0.4em] uppercase text-[#FFB796] mb-3 sm:mb-4 md:mb-6">
             Curated by Crispy Life Events
           </p>
 
           {/* Main headline */}
-          <h1 className="font-groovy text-white leading-[1.03] mb-4 sm:mb-6">
-            <span className="block text-3xl sm:text-4xl lg:text-[5.5rem] drop-shadow-md">Peaches</span>
-            <span className="block text-3xl sm:text-4xl lg:text-[5.5rem] drop-shadow-md">&amp; Cream</span>
+          <h1 className="font-groovy text-white leading-[1.03] mb-3 sm:mb-4 md:mb-6">
+            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[5.5rem] drop-shadow-md">Peaches</span>
+            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[5.5rem] drop-shadow-md">&amp; Cream</span>
           </h1>
 
           {/* Divider */}
@@ -394,21 +394,21 @@ function Hero() {
           </div>
 
           {/* Subheadline */}
-          <p className="font-tribal text-white/80 text-sm sm:text-base lg:text-xl leading-relaxed max-w-md mx-auto mb-6 sm:mb-10 tracking-wide">
+          <p className="font-tribal text-white/80 text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed max-w-md mx-auto mb-4 sm:mb-6 md:mb-10 tracking-wide">
             A beautiful daytime escape into soulful African sound
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4">
             <a
               href="#tickets"
-              className="w-full sm:w-auto bg-[#FFB796] text-[#1A1A1A] font-body font-semibold text-sm px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[#FF9E76] transition-all hover:scale-105 hover:shadow-lg hover:shadow-[#FFB796]/30 active:scale-95"
+              className="w-full sm:w-auto bg-[#FFB796] text-[#1A1A1A] font-body font-semibold text-xs sm:text-sm px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full hover:bg-[#FF9E76] transition-all hover:scale-105 hover:shadow-lg hover:shadow-[#FFB796]/30 active:scale-95"
             >
               Get Tickets
             </a>
             <a
               href="#the-experience"
-              className="w-full sm:w-auto border border-white/40 text-white font-body font-medium text-sm px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white/10 hover:border-white/60 transition-all"
+              className="w-full sm:w-auto border border-white/40 text-white font-body font-medium text-xs sm:text-sm px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full hover:bg-white/10 hover:border-white/60 transition-all"
             >
               Explore the Vibe
             </a>
@@ -446,7 +446,7 @@ function ArtistCard({ artist }: { artist: (typeof artists)[0] }) {
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden cursor-pointer"
+      className="relative rounded-2xl overflow-hidden cursor-pointer w-full"
       style={{ aspectRatio: "3/4" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -513,7 +513,7 @@ function Lineup() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
           {artists.map((a) => (
             <ArtistCard key={a.name} artist={a} />
           ))}
@@ -616,7 +616,8 @@ function FitCheck() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: dir === "right" ? 330 : -330, behavior: "smooth" });
+    const scrollAmount = window.innerWidth < 640 ? 280 : 330;
+    scrollRef.current.scrollBy({ left: dir === "right" ? scrollAmount : -scrollAmount, behavior: "smooth" });
   };
 
   return (
@@ -661,7 +662,7 @@ function FitCheck() {
           <div
             key={o.label}
             className="relative flex-none rounded-2xl overflow-hidden group cursor-pointer bg-[#F5EEE6]"
-            style={{ width: 290, aspectRatio: "4/5" }}
+            style={{ width: "min(280px, 85vw)", aspectRatio: "4/5" }}
           >
             <img
               src={o.img}
@@ -983,6 +984,7 @@ function SocialAndFooter() {
                     src="https://www.instagram.com/p/DZxNTYaDC9K/embed/"
                     className="w-full h-full rounded-2xl"
                     style={{ border: "none", overflow: "hidden", borderRadius: "16px" }}
+                    loading="lazy"
                   />
                 </div>
               ) : i === 1 ? (
@@ -995,6 +997,7 @@ function SocialAndFooter() {
                     src="https://www.instagram.com/p/DZzhzsAjGvy/embed/"
                     className="w-full h-full rounded-2xl"
                     style={{ border: "none", overflow: "hidden", borderRadius: "16px" }}
+                    loading="lazy"
                   />
                 </div>
               ) : i === 2 ? (
@@ -1007,6 +1010,7 @@ function SocialAndFooter() {
                     src="https://www.instagram.com/p/DZxNTYaDC9K/embed/"
                     className="w-full h-full rounded-2xl"
                     style={{ border: "none", overflow: "hidden", borderRadius: "16px" }}
+                    loading="lazy"
                   />
                 </div>
               ) : i === 3 ? (
@@ -1019,6 +1023,7 @@ function SocialAndFooter() {
                     src="https://www.instagram.com/p/DZwwW2JDM8O/embed/"
                     className="w-full h-full rounded-2xl"
                     style={{ border: "none", overflow: "hidden", borderRadius: "16px" }}
+                    loading="lazy"
                   />
                 </div>
               ) : i === 4 ? (
@@ -1031,6 +1036,7 @@ function SocialAndFooter() {
                     src="https://www.instagram.com/p/DZvCo3zjDCm/embed/"
                     className="w-full h-full rounded-2xl"
                     style={{ border: "none", overflow: "hidden", borderRadius: "16px" }}
+                    loading="lazy"
                   />
                 </div>
               ) : (
@@ -1043,6 +1049,7 @@ function SocialAndFooter() {
                     src={src}
                     alt={`Festival moment ${i + 1}`}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#FFB796]/10">
                     <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
@@ -1099,7 +1106,7 @@ function SocialAndFooter() {
             </div>
 
             {/* Quick links */}
-            <div className="col-span-2 col-start-6">
+            <div className="col-span-1 sm:col-span-1 lg:col-span-2 lg:col-start-6">
               <p className="font-body text-[10px] uppercase tracking-[0.22em] text-[#FFFDF9]/25 mb-5">
                 Navigate
               </p>
@@ -1118,7 +1125,7 @@ function SocialAndFooter() {
             </div>
 
             {/* Newsletter */}
-            <div className="col-span-4 col-start-9">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-4 lg:col-start-9">
               <p className="font-body text-[10px] uppercase tracking-[0.22em] text-[#FFFDF9]/25 mb-5">
                 Stay in the loop
               </p>
@@ -1145,7 +1152,7 @@ function SocialAndFooter() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex gap-2">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
                   <div className="flex-1 relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FFFDF9]/25" />
                     <input
@@ -1169,12 +1176,12 @@ function SocialAndFooter() {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-[#FFFDF9]/7 pt-7 flex items-center justify-between">
-            <p className="font-body text-xs text-[#FFFDF9]/25">
+          <div className="border-t border-[#FFFDF9]/7 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="font-body text-xs text-[#FFFDF9]/25 text-center sm:text-left">
               © 2026 Peaches &amp; Cream Africa. All rights reserved. Curated
               by Crispy Life Events.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
               {["Privacy Policy", "Terms & Conditions", "Cookie Policy"].map((l) => (
                 <a
                   key={l}
