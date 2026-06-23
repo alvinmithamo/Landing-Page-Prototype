@@ -6,7 +6,7 @@ import njerae from "../imports/njerae.jpg";
 import watendawili from "../imports/watendawili.jpg";
 import kethan from "../imports/kethan.jpg";
 import ochiko from "../imports/ochiko.jpg";
-import iv from "../imports/iv.jpg";
+import iv from "../imports/IV.jpg";
 import bune from "../imports/bune.jpg";
 import darkfruit from "../imports/darkfruit.jpg";
 import soundEdit from "../imports/sound edit.png";
