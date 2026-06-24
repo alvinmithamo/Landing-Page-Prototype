@@ -297,7 +297,7 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 group">
-          <img src={logo} alt="Peaches & Cream" className="h-10 sm:h-16 w-auto" />
+          <img src={logo} alt="Peaches & Cream" className="h-10 sm:h-16 w-auto" loading="eager" />
           {/* <span
             className={`font-display text-sm font-bold tracking-[0.22em] transition-colors ${
               scrolled ? "text-[#1A1A1A]" : "text-white"
@@ -365,6 +365,7 @@ function Hero() {
               alt="Festival atmosphere"
               className="w-full h-full object-cover"
               style={{ opacity: 0.6 }}
+              loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
         ))}
@@ -456,6 +457,8 @@ function ArtistCard({ artist }: { artist: (typeof artists)[0] }) {
         src={artist.img}
         alt={artist.name}
         className={`w-full h-full object-cover transition-transform duration-700 ${hovered ? "scale-105" : "scale-100"}`}
+        loading="lazy"
+        style={{ backgroundColor: "#F5EEE6" }}
       />
 
       {/* Gradient */}
@@ -668,6 +671,8 @@ function FitCheck() {
               src={o.img}
               alt={o.label}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              style={{ backgroundColor: "#F5EEE6" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/90 via-[#1A1A1A]/40 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
@@ -1050,6 +1055,7 @@ function SocialAndFooter() {
                     alt={`Festival moment ${i + 1}`}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
                     loading="lazy"
+                    style={{ backgroundColor: "#EDE6DB" }}
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#FFB796]/10">
                     <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
@@ -1072,7 +1078,7 @@ function SocialAndFooter() {
                   <div className="w-2 h-2 rounded-full bg-[#1A1A1A]" /> */}
                 </div>
                  <a href="/" className="flex items-center gap-2.5 group">
-                    <img src={logo} alt="Peaches & Cream" className="h-16 w-auto" />
+                    <img src={logo} alt="Peaches & Cream" className="h-16 w-auto" loading="lazy" />
                     {/* <span
                       className={`font-display text-sm font-bold tracking-[0.22em] transition-colors ${
                         scrolled ? "text-[#1A1A1A]" : "text-white"
